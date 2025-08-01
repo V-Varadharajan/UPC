@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decentralized Video Conference</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Scripts (Deferred for Better Performance) -->
+    <script src="/js/socket.io.js" defer></script>
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+
+    <!-- Main Application Container -->
+    <main class="main-container">
+        
+        <!-- Sidebar for Contact List -->
+        <aside class="caller-list-wrapper">
+            <h1 class="caller-list-heading">📞 Contacts</h1>
+            <ul id="allusers" class="caller-list">
+                <li>
+                    <button class="call-btn">
+                        <img width="20" src="/images/phone.png" alt="Call">
+                    </button>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Video Call Section -->
+        <section class="video-call-container">
+            
+            <!-- Username Input -->
+            <div class="username-input">
+                <input id="username" type="text" placeholder="Enter Username">
+                <button id="create-user">Create</button>
+            </div>
+
+            <!-- Video Streams Container -->
+            <div class="video-streams">
+                <div class="local-video">
+                    <video id="localVideo" autoplay muted playsinline></video>
+                </div>
+                <div class="remote-video">
+                    <video id="remoteVideo" autoplay playsinline></video>
+                </div>
+            </div>
+
+            <!-- End Call Button -->
+            <div class="btn-group">
+                <button id="end-call-btn">
+                    <img src="/images/phone.png" alt="End Call" width="24">
+                </button>
+                <button id="mute-mic-btn">
+                    <img src="/images/microphone.png" alt="Mute" width="24">
+                </button>
+                <button id="disable-cam-btn">
+                    <img src="/images/camera.png" alt="Disable Camera" width="24">
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

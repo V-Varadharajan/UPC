@@ -1,0 +1,362 @@
+/* || General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Lora", serif;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a); /* Smooth dark gradient */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* || Main Layout */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+}
+
+/* || Sidebar (Caller List) */
+.caller-list-wrapper {
+    flex-basis: 280px;
+    background: rgba(30, 30, 30, 0.6); /* Glassmorphism effect */
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.3);
+    border-radius: 0 10px 10px 0;
+}
+
+.caller-list-heading {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #00eaff;
+    text-transform: uppercase;
+}
+
+/* || Username Input */
+.username-input {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    background: rgba(42, 42, 42, 0.8); /* Glass effect */
+    border-radius: 12px;
+    margin-bottom: 15px;
+    backdrop-filter: blur(6px);
+}
+
+.username-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #505050;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.username-input input:focus {
+    outline: none;
+    background: #606060;
+}
+
+.username-input button {
+    padding: 10px;
+    border: none;
+    background: linear-gradient(135deg, #0078D4, #005ea6);
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.username-input button:hover {
+    background: linear-gradient(135deg, #008cff, #006bbf);
+    transform: scale(1.05);
+}
+
+/* || Video Call Container */
+.video-call-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+}
+
+/* || Remote Video (Big Screen) */
+.remote-video {
+    width: 100%;
+    max-width: 900px;
+    height: 70vh;
+    background: black;
+    border-radius: 15px;
+    border: 2px solid #00bcd4;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* || Local Video (Small & Floating) */
+.local-video {
+    width: 25%;
+    max-width: 200px;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: 10px;
+    border: 2px solid cyan;
+    box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.6);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+}
+
+.btn-round {
+    width: 54px; /* Same size as end call button */
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 50;
+    transition: transform 0.2s ease-in-out, background 0.3s;
+}
+
+/* End Call Button */
+/* || End Call Button */
+#end-call-btn {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(145deg, #ff0000, #cc0000);
+    border: none;
+    padding: 14px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+
+#end-call-btn:active {
+    transform: scale(1);
+    box-shadow: 0px 3px 10px rgba(255, 0, 0, 0.5);
+}
+
+/* || Mute Mic & Disable Cam Buttons */
+#mute-mic-btn, #disable-cam-btn {
+    bottom: 15px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Positioning */
+#mute-mic-btn {
+    position: absolute;
+    left: calc(50% - 80px);
+}
+
+#disable-cam-btn {
+    position: absolute;
+    left: calc(50% + 80px);
+}
+
+/* Hover Effects */
+#mute-mic-btn:hover, #disable-cam-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0px 8px 18px rgba(0, 123, 255, 0.6);
+}
+
+#mute-mic-btn:active, #disable-cam-btn:active {
+    transform: scale(1);
+    box-shadow: 0px 3px 10px rgba(0, 123, 255, 0.5);
+}
+
+/* || Button Icons */
+#end-call-btn img, 
+#mute-mic-btn img, 
+#disable-cam-btn img {
+    width: 30px;
+    height: 30px;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* || Contact List Container */
+/* Wrapper Styling */
+.caller-list-wrapper {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px; /* Adjust for layout */
+    color: white;
+}
+
+/* Heading Styling */
+.caller-list-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00eaff;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Contact List */
+.caller-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Contact Item */
+.caller-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.caller-list li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Username Styling */
+.username {
+    flex-grow: 1; /* Makes the name take full space */
+}
+
+/* || General Button Group Styling */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* || Individual Buttons */
+.btn-group button {
+    background-color: #222;
+    border: none;
+    color: white;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+
+/* || End Call Button */
+#end-call-btn {
+    background: linear-gradient(145deg, #ff3b3b, #cc0000);
+    box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.5);
+}
+
+#end-call-btn:hover {
+    background: linear-gradient(145deg, #ff5e5e, #ff1a1a);
+}
+
+/* || Mute Button */
+#mute-mic-btn {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.5);
+}
+
+#mute-mic-btn:hover {
+    background: linear-gradient(135deg, #008cff, #006bbf);
+}
+
+/* || Camera Disable Button */
+#disable-cam-btn {
+    background: linear-gradient(135deg, #ff9800, #e65100);
+    box-shadow: 0px 5px 15px rgba(255, 152, 0, 0.5);
+}
+
+#disable-cam-btn:hover {
+    background: linear-gradient(135deg, #ffb74d, #ff8c00);
+}
+
+/* || Button Icons */
+.btn-group button img {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+
+
+/* || Ensure Videos Fill Containers */
+.local-video video,
+.remote-video video {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+/* || Responsive Design */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .caller-list-wrapper {
+        width: 100%;
+        flex-basis: auto;
+        border-right: none;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 0 10px 10px;
+    }
+
+    .video-call-container {
+        padding: 10px;
+    }
+
+    .remote-video {
+        width: 90%;
+        height: 50vh;
+    }
+
+    .local-video {
+        width: 30%;
+        max-width: 150px;
+    }
+}
